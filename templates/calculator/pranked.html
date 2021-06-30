@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <title>You have been fooled </title>
+</head>
+
+<style>
+  body{
+    background-color: rgb(148, 11, 11);
+  }
+</style>
+
+<body>
+
+  <div class="container">
+    <div class="text-white text-center">
+      <h1>You have been successfully pranked</h1>
+      <h5>I'm not actually a love calculator but a practical joke sent to you by {{ name }}. </h5><br>
+      <h6>Your name and your crush name has been successfully sent to {{ name }}</h6>
+      <br>
+      <h3><a href='/accounts/signup/'>Click here</a> and start fooling others. <p>&#128521;</p></h3>
+    </div>
+    <img src="{% static 'images/pranked.gif' %}" class="col-sm-12 img-fluid" style="margin-top: 10px;">
+
+  </div>
+
+</body>
+</html>

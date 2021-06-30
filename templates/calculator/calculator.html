@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Love Calculator</title>   
+    
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<!-- Google Fonts -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+
+  </head>
+
+  <body>
+
+	<div class="row align-items-center bg_heart" style="margin-left: 0; margin-right: 0	;">
+		<div class="container">
+			<div class="container" style="font-size: large; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+			To find out what the chances for you and your dream partner are, just fill in both full names (both first and last name) in the two text boxes below, and press Calculate.
+
+				<div style="font-size:small; margin-top:20px;">Your data will not be shared with anyone.</div>
+
+			</div>
+			
+		</div>
+			<form class="input-group" style="align-items: center; justify-content: center;" action="{{ request.path }}" method="POST" id="love_form" onsubmit="formsubmit()">
+				{% csrf_token %}
+
+				<div class="form-outline">
+					<input type="text" id="ip2" style="margin: 10px;" name="name" placeholder="Your Name"/>
+				
+					<input type="text" id="ip2" style="margin: 10px;" name="crush" placeholder="Crush Name"/>
+				</div>
+				<button type="submit" class="btn btn-primary btn-lg" style="border-radius: 20px; background-color: rgb(185, 12, 6); border-width: 2px; border-color: rgb(49, 6, 3);">Calclate</button>
+
+
+			</form>
+		</div>
+
+  </body>
+
+
+<script>
+  console.log('working');
+
+  if(localStorage.getItem('love calculator') == null){
+  console.log('empty');
+  }
+  
+  else{
+  document.getElementById('love_form').innerHTML = "You have alredy filled this. <a href='/accounts/signup' style='color:rgb(9, 184, 232); font-weight:bold;'>Click here </a> and start fooling others.";
+  }
+  
+  function formsubmit()
+  {
+  localStorage.setItem('love calculator', 'submitted'); document.getElementById('love_form').submit();	
+  }
+</script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="{% static 'js/calc_style.js' %}"></script>
+
+</html>
